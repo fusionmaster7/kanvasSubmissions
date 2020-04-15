@@ -40,8 +40,15 @@ const addRow = (tableId, userObj) => {
   let cell6 = row.insertCell(5);
   let cell7 = row.insertCell(6);
   let anchor = document.createElement("a");
-  anchor.setAttribute("href", userObj.url);
-  anchor.setAttribute("target", "_blank");
+  const exp = /^https:\/\//;
+  if (!exp.test(userObj.url)) {
+    anchor.setAttribute("href", `https://${userObj.url}`);
+    anchor.setAttribute("target", "_blank");
+  } else {
+    anchor.setAttribute("href", userObj.url);
+    anchor.setAttribute("target", "_blank");
+    userObj.url = userObj.url.replace(exp, "");
+  }
   anchor.innerText = userObj.url;
   cell1.innerHTML = len;
   cell2.innerHTML = userObj.name;

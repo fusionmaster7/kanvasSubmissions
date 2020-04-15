@@ -25,6 +25,7 @@ table {
   border-radius: 5px;
   border-collapse: separate;
   border-spacing: 10px;
+  word-wrap: break-word;
 }
 
 tr:hover {

@@ -14,6 +14,20 @@ const db = firebase.firestore();
 const webRef = db.collection("webdev");
 const graphicRef = db.collection("graphics");
 
+//Getting number of entries
+webRef.get().then((snap) => {
+  document.getElementById(
+    "web-entries"
+  ).innerHTML = `Number of entries: ${snap.size}`;
+});
+
+graphicRef.get().then((snap) => {
+  document.getElementById(
+    "graphic-entries"
+  ).innerHTML = `Number of entries: ${snap.size}`;
+});
+
+//Function to add row
 const addRow = (tableId, userObj) => {
   let table = document.getElementById(tableId);
   const len = table.rows.length;
@@ -25,11 +39,15 @@ const addRow = (tableId, userObj) => {
   let cell5 = row.insertCell(4);
   let cell6 = row.insertCell(5);
   let cell7 = row.insertCell(6);
+  let anchor = document.createElement("a");
+  anchor.setAttribute("href", userObj.url);
+  anchor.setAttribute("target", "_blank");
+  anchor.innerText = userObj.url;
   cell1.innerHTML = len;
   cell2.innerHTML = userObj.name;
   cell3.innerHTML = userObj.college;
   cell4.innerHTML = userObj.email;
-  cell5.innerHTML = userObj.url;
+  cell5.appendChild(anchor);
   cell6.innerHTML = userObj.slack;
   cell7.innerHTML = userObj.phone;
 };

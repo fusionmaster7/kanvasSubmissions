@@ -41,7 +41,9 @@ const addRow = (tableId, userObj) => {
   let cell7 = row.insertCell(6);
   let repoAnchor = document.createElement("a");
   let emailAnchor = document.createElement("a");
+  let mobileAnchor = document.createElement("a");
   emailAnchor.setAttribute("href", `mailto:${userObj.email}`);
+  mobileAnchor.setAttribute("href", `tel:${userObj.phone}`);
   const exp = /^https:\/\//;
   if (!exp.test(userObj.url)) {
     repoAnchor.setAttribute("href", `https://${userObj.url}`);
@@ -53,13 +55,14 @@ const addRow = (tableId, userObj) => {
   }
   repoAnchor.innerText = userObj.url;
   emailAnchor.innerText = userObj.email;
+  mobileAnchor.innerText = userObj.phone;
   cell1.innerHTML = len;
   cell2.innerHTML = userObj.name;
   cell3.innerHTML = userObj.college;
   cell4.appendChild(emailAnchor);
   cell5.appendChild(repoAnchor);
   cell6.innerHTML = userObj.slack;
-  cell7.innerHTML = userObj.phone;
+  cell7.appendChild(mobileAnchor);
 };
 
 const renderWebTable = async () => {

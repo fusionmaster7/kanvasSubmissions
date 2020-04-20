@@ -39,22 +39,25 @@ const addRow = (tableId, userObj) => {
   let cell5 = row.insertCell(4);
   let cell6 = row.insertCell(5);
   let cell7 = row.insertCell(6);
-  let anchor = document.createElement("a");
+  let repoAnchor = document.createElement("a");
+  let emailAnchor = document.createElement("a");
+  emailAnchor.setAttribute("href", `mailto:${userObj.email}`);
   const exp = /^https:\/\//;
   if (!exp.test(userObj.url)) {
-    anchor.setAttribute("href", `https://${userObj.url}`);
-    anchor.setAttribute("target", "_blank");
+    repoAnchor.setAttribute("href", `https://${userObj.url}`);
+    repoAnchor.setAttribute("target", "_blank");
   } else {
-    anchor.setAttribute("href", userObj.url);
-    anchor.setAttribute("target", "_blank");
+    repoAnchor.setAttribute("href", userObj.url);
+    repoAnchor.setAttribute("target", "_blank");
     userObj.url = userObj.url.replace(exp, "");
   }
-  anchor.innerText = userObj.url;
+  repoAnchor.innerText = userObj.url;
+  emailAnchor.innerText = userObj.email;
   cell1.innerHTML = len;
   cell2.innerHTML = userObj.name;
   cell3.innerHTML = userObj.college;
-  cell4.innerHTML = userObj.email;
-  cell5.appendChild(anchor);
+  cell4.appendChild(emailAnchor);
+  cell5.appendChild(repoAnchor);
   cell6.innerHTML = userObj.slack;
   cell7.innerHTML = userObj.phone;
 };

@@ -1,12 +1,5 @@
 var firebaseConfig = {
-  apiKey: "AIzaSyDxZrjUTyrIJqONYJZ71_i6wIr6UKtdD6A",
-  authDomain: "kanvas-862ce.firebaseapp.com",
-  databaseURL: "https://kanvas-862ce.firebaseio.com",
-  projectId: "kanvas-862ce",
-  storageBucket: "kanvas-862ce.appspot.com",
-  messagingSenderId: "534176018661",
-  appId: "1:534176018661:web:5b40267b2a0f00c6dee40c",
-  measurementId: "G-J7BS9KG8YC",
+  /*YOUR CONFIG HERE*/
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
